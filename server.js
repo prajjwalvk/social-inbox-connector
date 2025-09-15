@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'my_secret_token_social123';
-const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || 'https://hooks.slack.com/services/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';
+const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || 'https://hooks.slack.com/services/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';
 const PORT = process.env.PORT || 3000;
 
 // Enhanced logging middleware
@@ -14,6 +14,19 @@ app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
   next();
 });
+
+app.get('/webhook', (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  if (mode && token === VERIFY_TOKEN) {
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
+});
+
 
 // Simple GET route
 app.get('/', (req, res) => {
