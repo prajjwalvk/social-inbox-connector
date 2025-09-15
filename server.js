@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN || 'my_secret_token_social123';
-const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || 'https://hooks.slack.com/services/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';
+const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL || 'https://hooks.slack.com/services/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';
 const PORT = process.env.PORT || 3000;
 
 // Enhanced logging middleware
