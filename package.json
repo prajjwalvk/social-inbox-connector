@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start-api": "node src/server.js"
+    "start-api": "node server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
